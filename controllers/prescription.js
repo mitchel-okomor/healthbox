@@ -14,7 +14,6 @@ const orderId = () => {
 
 const prescription = {
   create: (req, res) => {
-    console.log("Creating prescription");
     const {
       doctor,
       hospital,
@@ -36,7 +35,6 @@ const prescription = {
     newPrescription
       .save()
       .then((data) => {
-        console.log(data);
         res.json({ message: "success", data });
       })
       .catch((err) => {
@@ -57,7 +55,6 @@ const prescription = {
   getUserEvents: (req, res) => {
     Prescription.find({ userId: req.params.id }, {})
       .then((data) => {
-        console.log(data);
         res.json(data);
       })
       .catch((err) => {
@@ -78,7 +75,6 @@ const prescription = {
   delete: (req, res) => {
     Prescription.findByIdAndRemove(req.params.id)
       .then((data) => {
-        console.log(data);
         res.send("deleted");
       })
       .catch((err) => {
@@ -87,7 +83,6 @@ const prescription = {
   },
 
   update: (req, res) => {
-    console.log("updating");
     const { title, description, venue, date, time, userId, price } = req.body;
     Prescription.findByIdAndUpdate(
       req.params.id,
@@ -106,7 +101,6 @@ const prescription = {
       }
     )
       .then((data) => {
-        console.log(data);
         res.send(data);
       })
       .catch((err) => {
@@ -118,7 +112,6 @@ const prescription = {
     Prescription.findById(req.params.id)
       .then((data) => {
         const isPublished = data.isPublished;
-        console.log("publish 117: " + isPublished);
         if (isPublished === "true") {
           Prescription.findByIdAndUpdate(
             req.params.id,
@@ -149,7 +142,6 @@ const prescription = {
             }
           )
             .then((data) => {
-              console.log("is published: " + data);
               res.send(data);
             })
             .catch((err) => {
@@ -197,7 +189,6 @@ const prescription = {
             }
           )
             .then((data) => {
-              console.log("is published: " + data);
               res.send(data);
             })
             .catch((err) => {
