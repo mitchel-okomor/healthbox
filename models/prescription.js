@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 const eventSchema = new mongoose.Schema(
   {
+    doctor: String,
+    hospital: String,
     firstname: String,
     lastname: String,
     prescription: String,

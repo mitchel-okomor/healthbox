@@ -15,8 +15,17 @@ const orderId = () => {
 const prescription = {
   create: (req, res) => {
     console.log("Creating prescription");
-    const { firstname, lastname, prescription, phone } = req.body;
+    const {
+      doctor,
+      hospital,
+      firstname,
+      lastname,
+      prescription,
+      phone,
+    } = req.body;
     const newPrescription = new Prescription({
+      doctor,
+      hospital,
       firstname,
       lastname,
       prescription,
